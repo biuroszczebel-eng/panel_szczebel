@@ -1,6 +1,6 @@
 {
-  "name": "Moja aplikacja",
-  "short_name": "Aplikacja",
+  "name": "Szczebel - Panel klienta",
+  "short_name": "Panel",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
