@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moja aplikacja</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#1f3a5f">
+<script>
+  // === JEDYNA RZECZ DO ZMIANY: wklej tutaj adres swojej aplikacji ===
+  const APP_URL = "https://script.google.com/macros/s/WKLEJ_SWOJE_ID/exec";
+
+  // Po uruchomieniu z ikony (zainstalowana aplikacja) od razu przechodzimy do /exec.
+  // W zwykłej karcie przeglądarki pokazujemy instrukcję instalacji.
+  const zainstalowana = ["standalone", "fullscreen", "minimal-ui"].some(
+    (tryb) => window.matchMedia("(display-mode: " + tryb + ")").matches
+  );
+  if (zainstalowana) {
+    window.location.replace(APP_URL);
+  }
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 32px 24px; background: #1f3a5f; color: #fff; line-height: 1.5; }
+  h1 { font-size: 1.4rem; margin-top: 0; }
+  ol { padding-left: 1.2rem; }
+  a { color: #fff; }
+</style>
+</head>
+<body>
+  <h1>Instalacja aplikacji</h1>
+  <ol>
+    <li>Otwórz menu Chrome (trzy kropki w prawym górnym rogu).</li>
+    <li>Wybierz „Dodaj do ekranu głównego”.</li>
+    <li>Wybierz „Zainstaluj”.</li>
+    <li>Uruchom aplikację z nowej ikony na ekranie głównym.</li>
+  </ol>
+  <p><a id="link" href="#">Otwórz aplikację w tej karcie</a></p>
+  <script>document.getElementById("link").href = APP_URL;</script>
+</body>
+</html>
